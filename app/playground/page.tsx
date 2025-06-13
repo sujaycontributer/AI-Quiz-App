@@ -1,8 +1,8 @@
 
 export default function Playground () {
-    return <div className="p-4 w-full   relative">
+    return <div className="p-4 w-full z-50  relative">
         
-        <div className="fixed  z-50 md:w-[30%] md:h-[25%]  ml-[40%] mt-[60vh] mx-auto">
+        <div className="fixed   md:w-[30%] md:h-[25%]  ml-[40%] mt-[60vh] mx-auto">
             <textarea className="resize-none w-full h-full rounded-md border-2 border-gray-400 pt-4 pl-2 text-md transition duration-200 ease-in-out
                                 focus:border-blue-950 focus:outline-none text-gray-300 " placeholder="Give the topics...">
 
@@ -15,7 +15,7 @@ export default function Playground () {
             
         </div>
 
-        <div className="flex z-50 flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center">
             
         </div>
 

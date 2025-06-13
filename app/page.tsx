@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="p-4 bg-red-200">
+    <div className="p-4 ">
      <div className="mt-26 md:text-3xl font-semibold text-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text text-transparent">
         
           Welcome to QuizCraft AI!
