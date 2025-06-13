@@ -1,6 +1,6 @@
 
 export default function Acheivements () {
-    return <div>
+    return <div className="bg-pink-500">
         Acheivements
     </div>
 }

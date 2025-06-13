@@ -25,11 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased  overflow-y-auto"`}>
+
         <Navbar />
-        {children}
+        <main className="mt-[70px] ">
+          {children}
+        </main>
       </body>
     </html>
   );
