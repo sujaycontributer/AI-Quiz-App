@@ -1,17 +1,15 @@
 "use client"
 
-
 import { useState } from "react";
 import Quiz from "../components/Quiz";
 import { quizProps } from "../components/Quiz";
 import axios from "axios";
 
 export default function Playground () {
-    const [topic, setTopic] = useState("");
     const [quiz, setQuiz] = useState<quizProps[]>([]);
-    console.log(typeof(quiz))
-
-
+    const [topic, setTopic] = useState("");
+    const [searchOpen, setSearchOpen] = useState<boolean>(true);
+    // console.log(typeof(quiz))
 
     const topicHandler = (e:any) => {
         console.log(e.target.value);
@@ -24,7 +22,8 @@ export default function Playground () {
             topic: topic
         });
         // console.log(response.data.data);
-        setQuiz(response.data.data)
+        setQuiz(response.data.data);
+        setSearchOpen(false);
 
       }catch(error:any) {
         if (!window.navigator.onLine) {
@@ -36,14 +35,15 @@ export default function Playground () {
         
     }
 
-    return <div className="p-4 w-full  relative">
+    return <div className="p-4 w-full relative bg-red-500">
         
-        <div className="fixed z-50 md:w-[30%]  md:h-[25%]  mt-[60vh] mx-auto bg-gray-500 rounded-md">
-            <textarea className="resize-none w-full h-full rounded-md border-2 border-gray-400 pt-4 pl-2 text-md transition duration-200 ease-in-out
+        <div className={`${searchOpen ? 'block': 'hidden'} fixed left-1/2 -translate-x-1/2 z-50  md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
+
+            <textarea className="resize-none w-full h-full  rounded-md md:border-2 border-gray-400 pt-4 pl-2 text-md transition duration-200 ease-in-out
                                 focus:border-blue-950 focus:outline-none text-gray-300 " placeholder="Give the topics..." onChange={topicHandler}>
 
             </textarea>
-            <button className="absolute bottom-2 right-2 bg-black  text-white px-3 py-1 text-sm rounded hover:bg-blue-700 transition" onClick={handleSubmit}>
+            <button className="absolute bottom-0.5 right-1 md:bottom-2 md:right-2 bg-black  text-white px-1 py-0.5 md:px-3 md:py-1 text-sm rounded hover:bg-blue-700 transition" onClick={handleSubmit}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
                 </svg>
@@ -51,13 +51,6 @@ export default function Playground () {
             
         </div>
 
-       {/* <div className="flex flex-col gap-2 ">
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-        <Quiz />
-       </div> */}
        {quiz.length > 0 && <div className="flex flex-col gap-2 ">
             {quiz.map((q:quizProps) => (<Quiz key={q.questionId} questionId={q.questionId} question={q.question} options={q.options} correctAnsId={q.correctAnsId} />)) }
        </div>}
