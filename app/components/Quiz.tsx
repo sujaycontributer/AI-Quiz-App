@@ -1,7 +1,20 @@
 "use client"
 import { useState } from "react";
 
-export default function Quiz () {
+interface option {
+  id: number;
+  option: string;
+}
+
+interface quizProps {
+  questionId: number;
+  question: string;
+  options: option[];
+  correctAnsId: string;
+}
+
+
+export default function Quiz (props:quizProps) {
      const [selectedOption, setSelectedOption] = useState(null);
 
   // Define the quiz question and options
@@ -43,8 +56,7 @@ export default function Quiz () {
         {/* Quiz Options Container */}
         <div className="space-y-2">
           {quizData.options.map((option) => (
-            <label key={option.id} className="cursor-pointer flex gap-8 border-2 rounded-md px-1 md:px-2 hover:border-blue-400">
-              {/* Hidden radio input. Uses 'peer' for styling the sibling div. */}
+            <label key={option.id} className={`cursor-pointer flex gap-8 border-2 rounded-md px-1 md:px-2 hover:border-blue-400`}>
 
               <div
                 className={`
@@ -66,7 +78,6 @@ export default function Quiz () {
                 checked={selectedOption === option.value} // Controlled component
                 onChange={handleOptionChange}
               />
-              {/* Styled label acting as the option button */}
               
             </label>
           ))}

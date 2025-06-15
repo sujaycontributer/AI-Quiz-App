@@ -8,13 +8,15 @@ const apiKey = process.env.API_KEY!;
 const systemPrompt = process.env.SYSTEM_PROMT;
 
 export async function POST(req: NextRequest){
+  console.log("Request is here")
 
 
     // how get the body req.body?
     const data = await req.json();
     const topic = data.topic;
+    console.log(topic);
    
-    console.log(systemPrompt)
+    // console.log(systemPrompt)
 
     try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); 

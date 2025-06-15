@@ -1,6 +1,6 @@
 
 export default function Acheivements () {
     return <div className="bg-pink-500">
-        Acheivements
+        Acheivements is build in process stay tune
     </div>
 }
