@@ -3,10 +3,13 @@
 
 import { useState } from "react";
 import Quiz from "../components/Quiz";
+import { quizProps } from "../components/Quiz";
 import axios from "axios";
 
 export default function Playground () {
     const [topic, setTopic] = useState("");
+    const [quiz, setQuiz] = useState<quizProps[]>([]);
+    console.log(typeof(quiz))
 
 
 
@@ -20,7 +23,8 @@ export default function Playground () {
          const response = await axios.post("/api/v1/search", {
             topic: topic
         });
-        console.log(response.data);
+        // console.log(response.data.data);
+        setQuiz(response.data.data)
 
       }catch(error:any) {
         if (!window.navigator.onLine) {
@@ -54,6 +58,9 @@ export default function Playground () {
         <Quiz />
         <Quiz />
        </div> */}
+       {quiz.length > 0 && <div className="flex flex-col gap-2 ">
+            {quiz.map((q:quizProps) => (<Quiz key={q.questionId} questionId={q.questionId} question={q.question} options={q.options} correctAnsId={q.correctAnsId} />)) }
+       </div>}
 
     </div>
 }
