@@ -28,7 +28,7 @@ export default function RootLayout({
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased  overflow-y-auto"`}>
 
         <Navbar />
-        <main className="mt-[70px]">
+        <main className="mt-[70px] ">
           {children}
         </main>
       </body>

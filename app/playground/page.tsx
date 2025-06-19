@@ -11,7 +11,7 @@ export default function Playground () {
     const [searchOpen, setSearchOpen] = useState<boolean>(true);
     // console.log(typeof(quiz))
 
-    const topicHandler = (e:any) => {
+    const topicHandler = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         console.log(e.target.value);
         setTopic(e.target.value);
     }
@@ -35,11 +35,11 @@ export default function Playground () {
         
     }
 
-    return <div className="p-4 w-full relative bg-red-500">
+    return <div className="p-4 w-full relative">
         
         <div className={`${searchOpen ? 'block': 'hidden'} fixed left-1/2 -translate-x-1/2 z-50  md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
 
-            <textarea className="resize-none w-full h-full  rounded-md md:border-2 border-gray-400 pt-4 pl-2 text-md transition duration-200 ease-in-out
+            <textarea className="resize-none w-full h-full  rounded-md md:border-[1px] border-gray-400 pt-4 pl-2 text-md 
                                 focus:border-blue-950 focus:outline-none text-gray-300 " placeholder="Give the topics..." onChange={topicHandler}>
 
             </textarea>
