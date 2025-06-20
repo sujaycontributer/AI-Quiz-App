@@ -37,7 +37,7 @@ export default function Playground () {
 
     return <div className="p-4 w-full relative">
         
-        <div className={`${searchOpen ? 'block': 'hidden'} fixed left-1/2 -translate-x-1/2 z-50  md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
+        <div className={`${searchOpen ? 'block': 'hidden'} shadow-md fixed left-1/2 -translate-x-1/2 z-50  md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
 
             <textarea className="resize-none w-full h-full  rounded-md md:border-[1px] border-gray-400 pt-4 pl-2 text-md 
                                 focus:border-blue-950 focus:outline-none text-gray-300 " placeholder="Give the topics..." onChange={topicHandler}>
