@@ -11,7 +11,7 @@ export default function CircularProgress() {
   const strokeDashoffset = circumference - (progress / 100) * circumference;
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center md:  shadow-2xl">
       <svg height={radius * 2} width={radius * 2}>
         <circle
           stroke="#e5e7eb" // light gray background circle
@@ -22,7 +22,7 @@ export default function CircularProgress() {
           cy={radius}
         />
         <circle
-          stroke="rgb(22, 163, 74)" // dark blue progress color
+          stroke="rgb(22, 163, 74)" // green 400 progress color
           fill="transparent"
           strokeWidth={stroke}
           strokeLinecap="round"
