@@ -10,7 +10,7 @@ export default function Home() {
             Unleash your curiosity and challenge your knowledge With QuizCraft AI
           </p>
 
-          <button className="bg-[#A9F36A] font-semibold text-sm rounded-sm m-5 p-2 text-gray-700 hover:cursor-pointer hover:text-black"><Link  href={"/playground"} >Let's play</Link></button>
+          <button className="bg-[#A9F36A] font-semibold  text-sm rounded-sm m-8 p-2 text-gray-700 hover:cursor-pointer hover:text-black"><Link  href={"/playground"} >Let's play</Link></button>
 
      </div>
     </div>

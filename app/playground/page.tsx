@@ -4,11 +4,13 @@ import { useState } from "react";
 import Quiz from "../components/Quiz";
 import { quizProps } from "../components/Quiz";
 import axios from "axios";
+import Loader from "../components/ui/Loader";
 
 export default function Playground () {
     const [quiz, setQuiz] = useState<quizProps[]>([]);
     const [topic, setTopic] = useState("");
     const [searchOpen, setSearchOpen] = useState<boolean>(true);
+    const [loader, setLoader] = useState <boolean>(false);
     // console.log(typeof(quiz))
 
     const topicHandler = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -16,12 +18,14 @@ export default function Playground () {
         setTopic(e.target.value);
     }
     const handleSubmit = async () => {
+        setLoader(true);
         
       try{
          const response = await axios.post("/api/v1/search", {
             topic: topic
         });
         // console.log(response.data.data);
+        setLoader(false);
         setQuiz(response.data.data);
         setSearchOpen(false);
 
@@ -34,6 +38,7 @@ export default function Playground () {
       }
         
     }
+    if(loader) return <div className="w-full h-screen flex justify-center items-center"> <Loader/> </div>
 
     return <div className="p-4 w-full relative z-30">
         
