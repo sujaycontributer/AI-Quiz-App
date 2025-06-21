@@ -15,15 +15,18 @@ datasource db {
 }
 
 model User {
-  id       Int    @unique @default(autoincrement()) @id
-  username String @unique
-  password String
+  id       Int            @unique @default(autoincrement()) @id
+  username String         @unique
+  password String 
+  quizdata QuizData?
 }
 
 model QuizData {
-  id              Int  @unique @default(autoincrement())
-  totalquiz       Int?
-  questionsSolved Int?
-  totalAccuracy   Int?
-  accuracy        Int?
+  id              Int     @unique @default(autoincrement()) @id
+  totalquiz       Int?    @default(0)
+  questionsSolved Int?    @default(0)
+  totalAccuracy   Int?    @default(0)
+  accuracy        Int?    @default(0)
+  user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId          Int     @unique
 }

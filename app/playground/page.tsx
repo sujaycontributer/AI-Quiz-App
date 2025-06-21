@@ -30,14 +30,11 @@ export default function Playground () {
         setSearchOpen(false);
 
       }catch(error:any) {
-        if (!window.navigator.onLine) {
-            alert("You are offline. Please connect to the internet.");
-        } else {
-            alert("Something went wrong: " + error.message);
-        }
+        console.log(error);
       }
         
     }
+    
     if(loader) return <div className="w-full h-screen flex justify-center items-center"> <Loader/> </div>
 
     return <div className="p-4 w-full relative z-30">
