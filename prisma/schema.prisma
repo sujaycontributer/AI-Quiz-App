@@ -10,9 +10,10 @@ datasource db {
 }
 
 model User {
-  id       String         @unique @id
+  id       String         @unique @id @default(cuid())
   username String         @unique
   password String 
+  imageUrl    String
   quizdata QuizData?
 }
 
