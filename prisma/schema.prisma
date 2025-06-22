@@ -10,7 +10,7 @@ datasource db {
 }
 
 model User {
-  id       Int            @unique @id
+  id       String         @unique @id
   username String         @unique
   password String 
   quizdata QuizData?
@@ -23,5 +23,5 @@ model QuizData {
   totalAccuracy   Int?    @default(0)
   accuracy        Int?    @default(0)
   user            User    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId          Int     @unique
+  userId          String  @unique
 }
