@@ -1,6 +1,6 @@
 
 // app/api/auth/[...nextauth]/route.js (or .ts)
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/app/lib/prisma";
@@ -9,57 +9,85 @@ import prisma from "@/app/lib/prisma";
 const googleClientId = process.env.GOOGLE_CLIENT_ID as string;
 const gooogleClientSecret = process.env.GOOGLE_CLIENT_SECRET as string;
 
-interface Session {
-    user: {
-      id: string; // Add your custom property here
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-    }
-}
 
-const authOptions = {                     // const authOptions = { ... }' for App Router
-                                         // 1. **Adapter:** Link NextAuth.js to your database
-  adapter: PrismaAdapter(prisma),
-
-  // 2. **Providers:** Define the authentication providers you'll use
+export const authOptions: NextAuthOptions = {
   providers: [
     GoogleProvider({
       clientId: googleClientId,
       clientSecret: gooogleClientSecret,
     }),
   ],
-
-  // 3. **Callbacks:** Customize session data and JWT
+  session: {
+    strategy: "jwt", // Explicitly define JWT strategy
+  },
   callbacks: {
-    // This callback runs when a JWT is created or updated
+    // This callback is now critical if you want to save users to your DB
+    async signIn({ user, account, profile }) {
+      // 'user' here is the data from Google (id, name, email, image)
+      // 'profile' is the raw data from Google
+      // 'account' has provider details like access_token
+
+      
+      // Checking if user already exists in YOUR database
+      let existingUser = await prisma.user.findFirst({
+        where: { email: user.email as string},
+      });
+
+      if (!existingUser) {
+        // If it's a new user, create a new record in my database
+        existingUser = await prisma.user.create({
+          data: {
+            name: user.name as string,
+            email: user.email as string,
+            image: user.image as string,
+            emailVerified: new Date(), // Google login implies email is verified
+          },
+        });
+        console.log("New user created in DB:", existingUser.id);
+      } else {
+        
+        await prisma.user.update({
+          where: { id: existingUser.id },
+          data: {
+            name: user.name as string,
+            image: user.image as string,
+            // You might update emailVerified if it wasn't before
+            // emailVerified: new Date(),
+          },
+        });
+        // console.log("Existing user updated in DB:", existingUser.id);
+      }
+
+      // You can pass the database user's ID to the JWT token now
+      // This 'existingUser.id' is now YOUR database ID.
+      (user as any).dbId = existingUser.id; // Temporarily add to user object for JWT callback
+                                           // Or, more robustly, fetch again in jwt callback if needed
+      // --- MANUAL DATABASE INTERACTION ENDS HERE ---
+
+      return true; // Allow sign-in
+    },
+
     async jwt({ token, user }) {
-      // 'user' is only present on first sign-in or when a new JWT is issued
+      // If 'user' is present, it means a sign-in or session update happened
+      // Here, 'user' now has the 'dbId' we manually added in signIn callback.
       if (user) {
-        // When using an adapter, user.id is the ID from your database
-        token.id = user.id;
+        token.id = (user as any).dbId || user.id; // Use your DB ID if available, else provider's ID
+        // Or if you didn't add dbId in signIn, you could fetch it here:
+        // const dbUser = await prisma.user.findUnique({ where: { email: token.email } });
+        // if (dbUser) token.id = dbUser.id;
       }
       return token;
     },
-    // This callback runs when a session is accessed (client or server)
+
     async session({ session, token }) {
-      // Add the database user ID to the session object that your app receives
+      // This remains largely the same: take from token, put into session
       if (token.id) {
         session.user.id = token.id;
       }
       return session;
     },
   },
-
-  // 4. **Session Strategy:** Explicitly use JWTs (default with adapters too)
-  session: {
-    strategy: "jwt",
-  },
-
-  // Optional: Enable debug mode in development for verbose logging
-  // debug: process.env.NODE_ENV === "development",
 };
-
 
 // For App Router:
 const handler = NextAuth(authOptions);

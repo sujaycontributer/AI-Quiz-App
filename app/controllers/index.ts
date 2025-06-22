@@ -32,9 +32,9 @@ export async function saveData(userId: string, totalquiz: number, questionsSolve
 
 export async function getData(userId: string) {
 
-    const quizdata = await prisma.quizData.findMany({
+    const quizdata = await prisma.quizData.findUnique({
         where : {
-            userId
+            
         }
     });
 

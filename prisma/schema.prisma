@@ -10,12 +10,16 @@ datasource db {
 }
 
 model User {
-  id       String         @unique @id @default(cuid())
-  username String         @unique
-  password String 
-  imageUrl    String
-  quizdata QuizData?
+  id                  String         @unique @id @default(cuid())
+  name                String         
+  email               String         @unique
+  image               String
+  password            String? 
+  emailVerified       DateTime
+  quizdata            QuizData?
 }
+
+
 
 model QuizData {
   id              Int     @unique @default(autoincrement()) @id
