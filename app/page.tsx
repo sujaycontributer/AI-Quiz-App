@@ -1,6 +1,16 @@
 import Link from "next/link";
+import {getServerSession} from "next-auth"
+import { authOptions } from "./api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  // const session = await getServerSession(authOptions);
+
+
+  // if(!session) {
+  //   redirect("api/auth/signin");
+  // }
+
   return (
     <div className="p-4 ">
      <div className="mt-26 md:text-3xl font-semibold text-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text text-transparent">
