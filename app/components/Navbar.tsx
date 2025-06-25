@@ -11,7 +11,7 @@ export default function Navbar () {
 
         <div className="w-[70%] p-1  mx-auto flex justify-center md:justify-between md:items-center gap-1 md:gap-4 cursor-pointer ">
             <div className="font-extrabold hidden md:block">
-                <span className="bg-white  text-center text-xl text-black mr-0.5 px-0.5 rounded-md">AI </span> <span className="text-xl text-white">Quiz</span> 
+                <span className="bg-white  text-center text-xl text-black mr-0.5 px-0.5 rounded-md">QuizCraft </span> <span className="text-xl text-white">AI</span> 
             </div>
         <div className="flex gap-4">
             <div className="rounded-md font-semibold hover:text-gray-500">
