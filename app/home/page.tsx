@@ -1,15 +1,16 @@
 
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 import CircularProgress from "../components/CircularProgress";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+
 export default async function Home() {
   const session = await getServerSession(authOptions);
-
-   if (!session) {
-    redirect('/api/auth/signin');
-  }
+   
+  //  if (!session) {
+  //   redirect('/api/auth/signin');
+  // }
 
   return <div className="p-4 flex flex-col md:flex-row gap-10 md:gap-4">
     <div className="flex  gap-2">

@@ -4,11 +4,11 @@ import Playground from "../playground/page";
 import Acheivements from "../acheivements/page";
 import {signIn, useSession} from "next-auth/react"
 import Link from "next/link";
-import { redirect } from "next/navigation";
+import { redirect, usePathname } from "next/navigation";
 
 export default function Navbar () {
-
     const {data:session, status} = useSession();
+    const pathname = usePathname();
     
     return <div className={`fixed z-50 h-4rem w-full  py-4 md:p-5 sm:text-sm  top-0 left-0  bg-black text-gray-400 md:border-b md:border-b-gray-500`} >
 
@@ -17,17 +17,17 @@ export default function Navbar () {
                 <span className="bg-white  text-center text-xl text-black mr-0.5 px-0.5 py-1 rounded-md cursor-pointer">QuizCraft </span> <span className="text-xl text-white">AI</span>
             </div>
         <div className="hidden md:flex gap-4">
-            <div className="rounded-md font-semibold hover:text-green-600">
+            <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/home'? 'text-green-600' : '' }`}>
             <Link href={"/home"}>
                 Home
             </Link>
             </div>
-        <div className="rounded-md font-semibold hover:text-green-600">
+        <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/playground' ? 'text-green-600':''}`} >
             <Link href={"/playground"}>
                 Playground
             </Link>
-            </div>
-        <div className="rounded-md font-semibold hover:text-green-600">
+        </div>
+        <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/acheivements'? 'text-green-600':''}`}>
             <Link href={"/acheivements"}>
                 Acheivements
             </Link>
