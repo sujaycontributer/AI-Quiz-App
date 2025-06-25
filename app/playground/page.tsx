@@ -42,7 +42,7 @@ export default function Playground () {
         <div className={`${searchOpen ? 'block': 'hidden'} shadow-md fixed left-1/2 -translate-x-1/2 z-50 w-[300px] h-[100px] md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
 
             <textarea className="resize-none w-full h-full  rounded-md md:border-[1px] border-gray-400 pt-4 pl-2 text-md 
-                                focus:border-blue-950 focus:outline-none text-gray-300 " placeholder="Give the topics..." onChange={topicHandler}>
+                                focus:border-blue-950 focus:outline-none text-white " placeholder="Give the topics..." onChange={topicHandler}>
 
             </textarea>
             <button className="absolute bottom-0.5 right-1 md:bottom-2 md:right-2 bg-black  text-white px-1 py-0.5 md:px-3 md:py-1 text-sm rounded hover:bg-blue-700 transition" onClick={handleSubmit}>

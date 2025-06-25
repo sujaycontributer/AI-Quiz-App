@@ -1,12 +1,12 @@
 
 import prisma from "../lib/prisma"; 
 
-export async function createUser(id: string, username: string, password: string) {
+export async function createUser(name:string, email: string, password: string) {
         const user = await prisma.user.create({
             data: {
-                id,
-                username,
-                password
+                name,
+                email,
+                password,
             }
 
         });
@@ -32,11 +32,10 @@ export async function saveData(userId: string, totalquiz: number, questionsSolve
 
 export async function getData(userId: string) {
 
-    const quizdata = await prisma.quizData.findUnique({
+    const quizdata = await prisma.quizData.findFirst({
         where : {
-            
+            userId: userId
         }
     });
-
     return quizdata;
 }

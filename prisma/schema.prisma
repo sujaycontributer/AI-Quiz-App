@@ -13,9 +13,9 @@ model User {
   id                  String         @unique @id @default(cuid())
   name                String         
   email               String         @unique
-  image               String
+  image               String?
   password            String? 
-  emailVerified       DateTime
+  emailVerified       DateTime?
   quizdata            QuizData?
 }
 
