@@ -6,10 +6,11 @@ import { redirect } from "next/navigation";
 export default async function Home() {
   const session = await getServerSession(authOptions);
 
-  // if(!session) {
-  //   // redirect("api/auth/signin");
-  //   redirect("/signin")
-  // }
+  if(!session) {
+    // redirect("api/auth/signin");
+    redirect("/signin")
+
+  }
 
   return (
     <div className="p-4 ">

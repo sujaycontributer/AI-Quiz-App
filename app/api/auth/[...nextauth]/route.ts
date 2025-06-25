@@ -40,6 +40,9 @@ export const authOptions: NextAuthOptions = {
             email: user.email as string,
             image: user.image as string,
             emailVerified: new Date(), // Google login implies email is verified
+            quizdata: {
+              create:{}
+            }
           },
         });
         console.log("New user created in DB:", existingUser.id);

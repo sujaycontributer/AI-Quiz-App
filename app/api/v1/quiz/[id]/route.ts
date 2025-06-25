@@ -1,3 +1,4 @@
+import { getData } from "@/app/controllers";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
@@ -8,9 +9,11 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     });
 }
 
-export async function GET(req:NextRequest, {params}: {params: {id: string}}) {
-    const userId = params.id;
+export async function GET({params}: {params: {id: string}}) {
+    const userId = params?.id;
+    const quizdata = await getData(userId);
+    console.log(quizdata);
     return NextResponse.json({
-        userId
+        quizdata
     })
 }

@@ -1,8 +1,8 @@
 "use client"
 import { useState } from "react";
 
-export default function CircularProgress() {
-  const [progress, setProgress] = useState(88); // Change this dynamically
+export default function CircularProgress({accuracy}:{accuracy:number}) {
+  const [progress, setProgress] = useState(accuracy); // Change this dynamically
 
   const radius = 50;
   const stroke = 10;

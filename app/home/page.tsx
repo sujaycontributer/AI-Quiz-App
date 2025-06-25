@@ -4,9 +4,18 @@ import CircularProgress from "../components/CircularProgress";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../api/auth/[...nextauth]/route";
+import axios from "axios";
 
 export default async function Home() {
   const session = await getServerSession(authOptions);
+  let data:any;
+
+  if(session) {
+        const userId = session.user?.id;
+        const response:any = await axios.get(`http://localhost:3000/api/v1/quiz/${userId}`);
+        data = response.data.quizdata;
+        console.log(data);
+  }
    
   //  if (!session) {
   //   redirect('/api/auth/signin');
@@ -19,7 +28,7 @@ export default async function Home() {
         <div className=" p-2"><span className="p-1 text-sm md:text-xl text-green-400 font-extrabold">Total Quiz</span></div>
       </div>
       <div className="rounded-full text-white text-2xl font-bold ">
-        30
+        {data.totalquiz}
       </div>
     </div>
 
@@ -28,11 +37,11 @@ export default async function Home() {
         <div className=" p-2"><span className="p-1 text-sm md:text-xl text-green-400 font-extrabold">Questions solved</span></div>
       </div>
       <div className="rounded-full text-white text-2xl font-semibold ">
-        100
+        {data.questionsSolved}
       </div>
     </div>
     </div>
-    <CircularProgress />
+    <CircularProgress  accuracy={data.accuracy}/>
 
   </div>
 }
