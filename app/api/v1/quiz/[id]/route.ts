@@ -1,8 +1,12 @@
-import { getData } from "@/app/controllers";
+import { getData, saveData } from "@/app/controllers";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest, { params }: { params: { id: string } }) {
-    
+export async function PUT(req: NextRequest, { params }: { params: { id: string } }) {
+    const userId = params?.id;
+    const data = req.json();
+    console.log(data);
+    // await saveData()
+    // const await 
 
     return NextResponse.json({
         message: "Post request recevied"

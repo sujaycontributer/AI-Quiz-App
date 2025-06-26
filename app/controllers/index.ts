@@ -14,7 +14,7 @@ export async function createUser(name:string, email: string, password: string) {
         return user;
 }
 
-export async function saveData(userId: string, totalquiz: number, questionsSolved: number, totalAccuracy: number, accuracy: number) {
+export async function saveData(userId: string, totalquiz: number, questionsSolved: number, accuracy: number) {
     const data = await prisma.quizData.update({
         where :{
             userId
