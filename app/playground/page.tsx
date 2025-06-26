@@ -5,13 +5,16 @@ import Quiz from "../components/Quiz";
 import { quizProps } from "../components/Quiz";
 import axios from "axios";
 import Loader from "../components/ui/Loader";
+import FinalScore from "../components/FinalScore";
+import { ScoreProvider } from "../components/ScoreProvider";
+import { useScore } from "../components/ScoreProvider";
 
 export default function Playground () {
     const [quiz, setQuiz] = useState<quizProps[]>([]);
     const [topic, setTopic] = useState("");
     const [searchOpen, setSearchOpen] = useState<boolean>(true);
     const [loader, setLoader] = useState <boolean>(false);
-    // console.log(typeof(quiz))
+    const {score, setScore} = useScore();
 
     const topicHandler = (e:React.ChangeEvent<HTMLTextAreaElement>) => {
         console.log(e.target.value);
@@ -26,7 +29,7 @@ export default function Playground () {
         });
         // console.log(response.data.data);
         setLoader(false);
-        setQuiz(response.data.data);
+        setQuiz((response.data as any).data);
         setSearchOpen(false);
 
       }catch(error:any) {
@@ -37,7 +40,8 @@ export default function Playground () {
     
     if(loader) return <div className="w-full h-screen flex justify-center items-center"> <Loader/> </div>
 
-    return <div className="p-4 w-full relative z-30">
+    return <ScoreProvider>
+        <div className="p-4 w-full relative z-30">
         
         <div className={`${searchOpen ? 'block': 'hidden'} shadow-md fixed left-1/2 -translate-x-1/2 z-50 w-[300px] h-[100px] md:w-[30%]  md:h-[25%]   mt-[60vh]  bg-gray-500 rounded-md`}>
 
@@ -56,6 +60,8 @@ export default function Playground () {
        {quiz.length > 0 && <div className="flex flex-col gap-2 ">
             {quiz.map((q:quizProps) => (<Quiz key={q.questionId} questionId={q.questionId} question={q.question} options={q.options} correctAnsId={q.correctAnsId} />)) }
        </div>}
+       <FinalScore />
 
     </div>
+    </ScoreProvider>
 }

@@ -12,7 +12,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
 export async function GET({params}: {params: {id: string}}) {
     const userId = params?.id;
     const quizdata = await getData(userId);
-    console.log(quizdata);
+    // console.log(quizdata);
     return NextResponse.json({
         quizdata
     })

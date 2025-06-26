@@ -10,16 +10,18 @@ export default async function Home() {
   const session = await getServerSession(authOptions);
   let data:any;
 
+   if (!session) {
+    redirect('/api/auth/signin');
+  }
+
   if(session) {
         const userId = session.user?.id;
         const response:any = await axios.get(`http://localhost:3000/api/v1/quiz/${userId}`);
         data = response.data.quizdata;
-        console.log(data);
+        // console.log(data);
   }
    
-  //  if (!session) {
-  //   redirect('/api/auth/signin');
-  // }
+  
 
   return <div className="p-4 flex flex-col md:flex-row gap-10 md:gap-4">
     <div className="flex  gap-2">

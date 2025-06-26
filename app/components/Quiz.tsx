@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import { useScore } from "./ScoreProvider";
 
 interface option {
   id: number;
@@ -17,8 +18,10 @@ export interface quizProps {
 
 export default function Quiz ({questionId, question, options,  correctAnsId}:quizProps) {
      const [selectedOption, setSelectedOption] = useState <number | null> (null);
-     const [finalAns, setFinalAns] = useState<boolean | null>(null);
+     const [finalAns, setFinalAns] = useState<boolean >(false);
      const [ansRight, setAnsRight] = useState<boolean | null>(null);
+     const {score, setScore} = useScore();
+     console.log(score)
 
   // Handler for when a radio button (option) is changed
     const handleOptionChange = (event:React.ChangeEvent<HTMLInputElement>) => {
@@ -32,6 +35,9 @@ export default function Quiz ({questionId, question, options,  correctAnsId}:qui
      const ans = selectedOption === correctAnsId ? true : false;
      setFinalAns(true);
      setAnsRight(ans);
+     if(ans) {
+      setScore(score+1);
+     }
     }
   };
     return <div>
@@ -80,7 +86,7 @@ export default function Quiz ({questionId, question, options,  correctAnsId}:qui
                      hover:bg-blue-950 focus:outline-none focus:ring-4 focus:ring-blue-300
                      transition-all duration-300 ease-in-out shadow-md
                      disabled:opacity-50 disabled:cursor-not-allowed"
-          disabled={!selectedOption} // Disable if no option is selected
+          disabled={!selectedOption || finalAns} // Disable if no option is selected
         >
           Submit Answer
         </button>
