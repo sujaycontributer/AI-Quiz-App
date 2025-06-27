@@ -21,7 +21,7 @@ export default function Quiz ({questionId, question, options,  correctAnsId}:qui
      const [finalAns, setFinalAns] = useState<boolean >(false);
      const [ansRight, setAnsRight] = useState<boolean | null>(null);
      const {score, setScore, qnSolved, setQnSolved} = useScore();
-    //  console.log(score)
+    //  console.log(qnSolved)
 
   // Handler for when a radio button (option) is changed
     const handleOptionChange = (event:React.ChangeEvent<HTMLInputElement>) => {

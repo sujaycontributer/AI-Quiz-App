@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 export default function FinalScore ({score, accuracy, questionsolved, submit}: {score: number, accuracy?: number, questionsolved: number, submit: boolean}) {
     const {data: session, status} = useSession();
     const acrcy = Math.floor((score/15) *100);
-    console.log(score);
+    // console.log(score);
     const handler =  async () => {
         if(!session){
             redirect('/api/auth/signin');
@@ -16,9 +16,10 @@ export default function FinalScore ({score, accuracy, questionsolved, submit}: {
         const userId = session.user.id;
         const data = await axios.put(`/api/v1/quiz/${userId}`,{
             score,
-            accuracy,
-            questionsolved,
-        })
+            accuracy:acrcy,
+            questionsSolved:questionsolved,
+        });
+        // console.log(data.data);
     }
     return <div className={`w-[30%] h-[30%] ${!submit ? 'hidden': 'block'} mx-auto fixed top-[50%] left-1/2 -translate-x-1/2 p-2 rounded-md shadow-2xl z-50 flex justify-center items-center bg-gray-200 text-black border border-dashed border-neutral-200`}>
         <div className="flex flex-col gap-2 p-1">

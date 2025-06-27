@@ -19,6 +19,7 @@ export default async function Home() {
         const response:any = await axios.get(`http://localhost:3000/api/v1/quiz/${userId}`);
         data = response.data.quizdata;
         // console.log(data);
+        // console.log(userId)
   }
    
   
