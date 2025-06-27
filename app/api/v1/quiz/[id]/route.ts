@@ -21,9 +21,9 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     });
 }
 
-export async function GET({params}: {params: {id: string}}) {
+export async function GET(req:NextRequest,{params}: {params: {id: string}}) {
     const userId = params?.id;
-    console.log(`userId in GET request ${userId}`)
+    // console.log(`userId in GET request ${userId}`)
     const quizdata = await getData(userId);
     // console.log(quizdata);
     return NextResponse.json({
