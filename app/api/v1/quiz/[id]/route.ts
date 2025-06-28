@@ -7,12 +7,9 @@ export async function PUT(req: NextRequest, { params }: { params: { id: string }
     // console.log(data)
     const accuracy = data.accuracy;
     const questionsSolved = data.questionsSolved; 
-    // totalquiz,
-    //         questionsSolved,
-    //         totalAccuracy,
-    //         accuracy
-    console.log(accuracy, questionsSolved);
-    const response = await saveData(userId, accuracy, questionsSolved);
+
+    console.log(`in route value: ${questionsSolved}`);
+    const response = await saveData(userId, questionsSolved, accuracy);
     
 
     return NextResponse.json({

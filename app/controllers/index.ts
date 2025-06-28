@@ -15,7 +15,6 @@ export async function createUser(name:string, email: string, password: string) {
 }
 
 export async function saveData(userId: string, questionsSolved: number, accuracy: number) {
-
     const quiz = await prisma.quizData.findUnique({
         where:{
             userId
@@ -27,13 +26,15 @@ export async function saveData(userId: string, questionsSolved: number, accuracy
    let qnslv:number = 0;
    
    if(quiz?.questionsSolved) {
+    // console.log(`total solved ${quiz.questionsSolved}`)
     qnslv = quiz.questionsSolved + questionsSolved;
+    // console.log(`after added solved ${qnslv}`)
    }else{
     qnslv = questionsSolved;
    }
 
    if(quiz?.totalAccuracy) {
-     totalAccuracy = quiz?.totalAccuracy + accuracy;
+       totalAccuracy = quiz?.totalAccuracy + accuracy;
    }else{
     totalAccuracy = accuracy;
    }
@@ -43,7 +44,8 @@ export async function saveData(userId: string, questionsSolved: number, accuracy
    }else{
     totalquiz = 1;
    }
-   const acr = Math.floor((totalAccuracy / totalquiz)*100 )
+   
+   const acr = Math.floor((totalAccuracy / totalquiz) )
    const data = await prisma.quizData.update({
         where :{
             userId
@@ -60,7 +62,7 @@ export async function saveData(userId: string, questionsSolved: number, accuracy
 }
 
 export async function getData(userId: string) {
-    console.log(`user id is ${userId}`);
+    // console.log(`user id is ${userId}`);
 
     const quizdata = await prisma.quizData.findFirst({
         where : {
