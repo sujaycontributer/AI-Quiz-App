@@ -87,7 +87,7 @@ export default function Playground() {
       {/* Submit + Score */}
       {submit && <div className="fixed inset-0 z-50 bg-black/60 blur-4xl"></div>}
       {quiz.length > 0 && !submit && <SubmitQuiz setSubmit={setSubmit} />}
-      {submit && <FinalScore score={score} setSubmit={setSubmit} questionsolved={qnSolved} submit={submit} />}
+      {submit && <FinalScore   setQuiz={setQuiz} score={score}  setSubmit={setSubmit} questionsolved={qnSolved} submit={submit} />}
     </div>
   );
 }
