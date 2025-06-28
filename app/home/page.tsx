@@ -16,7 +16,7 @@ export default async function Home() {
 
   if(session) {
         const userId = session.user?.id;
-        const response:any = await axios.get(`http://localhost:3000/api/v1/quiz/${userId}`);
+        const response:any = await axios.get(`/api/v1/quiz/${userId}`);
         data = response.data.quizdata;
         // console.log(data);
         // console.log(userId)
