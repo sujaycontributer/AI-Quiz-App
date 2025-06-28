@@ -11,12 +11,12 @@ export default async function Home() {
   let data:any;
 
    if (!session) {
-    redirect('/api/auth/signin');
+    redirect(`${process.env.NEXT_PUBLIC_BASE_URL}/api/auth/signin`);
   }
 
   if(session) {
         const userId = session.user?.id;
-        const response:any = await axios.get(`/api/v1/quiz/${userId}`);
+        const response:any = await axios.get(`${process.env.NEXT_PUBLIC_BASE_URL}/api/v1/quiz/${userId}`);
         data = response.data.quizdata;
         
   }
