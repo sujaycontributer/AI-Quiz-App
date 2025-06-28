@@ -3,7 +3,7 @@ import { redirect, usePathname } from "next/navigation";
 import CircularProgress from "../components/CircularProgress";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../api/auth/[...nextauth]/route";
+import { authOptions } from "../api/auth/[...nextauth]/authOptions";
 import axios from "axios";
 
 export default async function Home() {

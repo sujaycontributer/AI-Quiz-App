@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { quizProps } from "./Quiz";
 
 
-export default function FinalScore ({score, accuracy, questionsolved, submit, setSubmit, setQuiz}: {score: number, accuracy?: number, questionsolved: number, submit: boolean, setSubmit: (val:boolean) => void, setQuiz: (val: quizProps[])=> void})  {
+export default function FinalScore ({score, accuracy, questionsolved, submit, setSubmit, setQuiz, setSearchOpen}: {score: number, accuracy?: number, questionsolved: number, submit: boolean, setSubmit: (val:boolean) => void, setQuiz: (val: quizProps[])=> void, setSearchOpen: (val: boolean) => void})  {
     const {data: session, status} = useSession();
     const acrcy = Math.floor((score/15) *100);
     console.log(`in frontend value: ${questionsolved}`);
@@ -22,6 +22,8 @@ export default function FinalScore ({score, accuracy, questionsolved, submit, se
         });
         setSubmit(false);
         setQuiz([]);
+        setSearchOpen(true);
+
         
         
         // console.log(data.data);
