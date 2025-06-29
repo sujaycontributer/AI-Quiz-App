@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import SessionProviderWrapper from "./components/SessionProviderWrapper";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/authOptions";
+import Link from "next/link";
 
 
 
@@ -38,9 +39,15 @@ export default async function RootLayout({
 
         <SessionProviderWrapper  session={session}>
             <Navbar />
-          <main className="mt-[70px] ">
+          <main className="mt-[70px] min-h-screen ">
             {children}
           </main>
+
+          <div className="mb-4clrs font-bold flex justify-center gap-4">
+            <p className="text-md  text-gray-400 text-center">Build by sujay ghosh 🚀</p>
+            <Link href={"https://github.com/sujaycontributer/AI-Quiz-App"} className="hover:text-gray-500">Github</Link>
+            <Link href={"https://www.linkedin.com/in/sujay-ghosh-1b18a2266/"} className="hover:text-gray-500" >Linkedin</Link>
+          </div>
         </SessionProviderWrapper>
         
       </body>
