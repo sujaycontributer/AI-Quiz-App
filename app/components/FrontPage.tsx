@@ -9,15 +9,16 @@ export default async function FrontPage(){
             Unleash your curiosity and challenge your knowledge With QuizCraft AI
           </p>
 
+          <Link  href={"/playground"} >
           <button className="bg-[#A9F36A] relative font-semibold  text-sm  rounded-sm m-8 px-10 py-2 text-gray-700 hover:cursor-pointer hover:text-black">
             <div className="absolute top-2  animate-ping bg-blue-500  h-[50%] w-[70px] rounded-full">
-
             </div>
-            <Link  href={"/playground"} >
+            
               Let's play
-          </Link>
           </button>
+          </Link>
 
      </div>
+     
     </div>
 }
