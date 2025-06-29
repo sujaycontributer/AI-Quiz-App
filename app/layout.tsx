@@ -43,8 +43,8 @@ export default async function RootLayout({
             {children}
           </main>
 
-          <div className="mb-4clrs font-bold flex justify-center gap-4">
-            <p className="text-md  text-gray-400 text-center">Build by sujay ghosh 🚀</p>
+          <div className="mb-10 font-bold flex justify-center gap-4 h-[20%]">
+            <p className="text-sm md:text-md  text-gray-400 text-center">Build by sujay ghosh 🚀</p>
             <Link href={"https://github.com/sujaycontributer/AI-Quiz-App"} className="hover:text-gray-500">Github</Link>
             <Link href={"https://www.linkedin.com/in/sujay-ghosh-1b18a2266/"} className="hover:text-gray-500" >Linkedin</Link>
           </div>
