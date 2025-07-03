@@ -37,11 +37,11 @@ export default function Navbar () {
         </div>
         </div>
 
-       { status === "authenticated" &&  <div>
+       { status != "authenticated" &&  <div>
             <button className="bg-white text-gray-800 px-6 py-1 shadow-xl md:py-2 rounded-sm  cursor-pointer hover:bg-gray-300" onClick={() => signIn("google", {callbackUrl: "/"})}>Login</button>
         </div>}
 
-        { status !="authenticated" &&  <div className="flex ">
+        { status ==="authenticated" &&  <div className="flex ">
                
             <button className="bg-white text-gray-800 px-6 py-1 shadow-xl md:py-2 rounded-sm  cursor-pointer hover:bg-gray-300" onClick={() => signOut( {callbackUrl: "/"})}>Logout</button>
         </div>}
