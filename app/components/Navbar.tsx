@@ -41,7 +41,7 @@ export default function Navbar () {
             <button className="bg-white text-gray-800 px-6 py-1  shadow-xl md:py-2 rounded-sm  cursor-pointer hover:bg-gray-300" onClick={() => signIn("google", {callbackUrl: "/"})}>Login</button>
         </div>}
 
-        { status === "authenticated" &&  <span className="p-1 bg-white shadow-xl px-2 rounded-sm cursor-pointer text-gray-800">
+        { status === "authenticated" &&  <span className="p-1 bg-white shadow-xl px-2 rounded-sm cursor-pointer text-gray-800" onClick={() => signOut({callbackUrl:'/'})}>
             Logout
         </span>}
 
