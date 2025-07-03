@@ -7,6 +7,8 @@ import Loader from "./ui/Loader";
 import FinalScore from "./FinalScore";
 import SubmitQuiz from "./SubmitQuiz";
 import { useScore } from "./ScoreProvider";
+import { useSession } from "next-auth/react";
+import { redirect } from "next/navigation";
 
 export default function Playground() {
   const [quiz, setQuiz] = useState<quizProps[]>([]);
@@ -14,6 +16,7 @@ export default function Playground() {
   const [searchOpen, setSearchOpen] = useState(true);
   const [loader, setLoader] = useState(false);
   const [submit, setSubmit] = useState(false);
+  const {status} = useSession();
 
   const { score, setScore, qnSolved, setQnSolved } = useScore();
 
@@ -40,6 +43,9 @@ export default function Playground() {
         <Loader />
       </div>
     );
+    if(status != 'authenticated'){
+      redirect('/signin')
+    }
 
   return (
     <div className="p-4 w-full relative z-30">
