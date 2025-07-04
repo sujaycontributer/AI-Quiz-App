@@ -21,7 +21,7 @@ export default function Navbar () {
             <Link href={"/home"}>
                 Home
             </Link>
-            </div>
+            </div>  
         <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/playground' ? 'text-green-600':''}`} >
             <Link href={"/playground"}>
                 Playground
