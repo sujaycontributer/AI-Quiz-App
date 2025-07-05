@@ -37,15 +37,31 @@ export default function Playground() {
     }
   };
 
+  const handleKeyDown = async (e:any) => {
+    if(e.key === "Enter") {
+       setLoader(true);
+    try {
+      const response = await axios.post("/api/v1/search", { topic });
+      setQuiz((response.data as any).data);
+      setSearchOpen(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoader(false);
+    }
+    }
+  }
+
   if (loader)
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <Loader />
       </div>
     );
-    if(status != 'authenticated'){
-      redirect('/signin')
-    }
+
+  if(status != 'authenticated'){
+          redirect('/signin')
+  }      
 
   return (
     <div className="p-4 w-full relative z-30">
@@ -59,6 +75,7 @@ export default function Playground() {
           className="resize-none w-full h-full rounded-md md:border-[1px] border-gray-400 pt-4 pl-2 text-md focus:border-blue-950 focus:outline-none text-white"
           placeholder="Give the topics..."
           onChange={topicHandler}
+          onKeyDown={handleKeyDown}
         />
         <button
           className="absolute bottom-0.5 right-1 md:bottom-2 md:right-2 bg-black text-white px-1 py-0.5 md:px-3 md:py-1 text-sm rounded hover:bg-blue-700 transition"
