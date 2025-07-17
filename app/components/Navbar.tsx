@@ -10,7 +10,7 @@ export default function Navbar () {
     const {data:session, status} = useSession();
     const pathname = usePathname();
     
-    return <div className={`fixed z-50 md:max-w-[80%] rounded-md shadow-md h-4rem w-full py-4 md:p-5 sm:text-sm bg-gradient-to-r from-blue-200 to-cyan-200 top-0 left-0 text-gray-800 md:border-b md:border-b-gray-500`} >
+    return <div className={`fixed z-50 md:max-w-[80%] mx-auto rounded-md shadow-md h-4rem w-full py-4 md:p-5 sm:text-sm bg-gradient-to-r from-blue-200 to-cyan-200 top-0 left-0 text-gray-800 md:border-b md:border-b-gray-500`} >
 
         <div className="w-[90%] p-1 mx-auto flex justify-between md:justify-between md:items-center gap-1 md:gap-4 cursor-pointer ">
             <div className="hidden md:block font-extrabold shadow-2xl" onClick={() => redirect("/")}>
