@@ -23,7 +23,7 @@ export default async function Home() {
    
   
 
-  return <div className="p-4 flex flex-col md:flex-row gap-10 md:gap-4">
+  return <div className="p-4 flex flex-col md:flex-row gap-10 md:gap-4 max-w-2xl mx-auto">
     <div className="flex  gap-2">
       <div className="w-[180px] md:w-[250px] h-[100px] flex flex-col justify-center items-center  p-1 md:p-2 border-[1px] rounded-xl shadow-2xl border-gray-400">
       <div className=" text-gray-400 ">
