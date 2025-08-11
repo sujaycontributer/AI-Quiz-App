@@ -2,11 +2,11 @@ import Link from "next/link";
 
 export default async function FrontPage(){
     return <div className="p-4 ">
-     <div className="mt-26 font-sans md:text-3xl font-semibold text-center bg-gradient-to-r from-indigo-500 from-10% via-sky-500 via-30% to-emerald-500 to-90% bg-clip-text text-transparent">
+     <div className="mt-26 font-sans md:text-3xl font-extrabold text-center text-gray-200">
         
-          Welcome to QuizCraft AI!
+          Welcome to <span className="bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent">QuizCraft AI!</span>
           <p className="md:mt-1">
-            Unleash your curiosity and challenge your knowledge With QuizCraft AI
+            Unleash your curiosity and challenge your knowledge With <span className="bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent">QuizCraft AI</span>
           </p>
 
           <Link  href={"/playground"} >
