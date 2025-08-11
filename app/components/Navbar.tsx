@@ -14,7 +14,7 @@ export default function Navbar () {
 
         <div className="w-[95%] p-1 mx-auto flex justify-between md:justify-between md:items-center gap-1 md:gap-4 cursor-pointer ">
             <div className="hidden md:block font-extrabold shadow-2xl" onClick={() => redirect("/")}>
-                <span className="bg-white  text-center text-xl text-black mr-0.5 px-0.5 py-1 rounded-md cursor-pointer">QuizCraft </span> <span className="text-xl text-white">AI</span>
+                <span className="bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent text-center text-xl  mr-0.5 px-0.5 py-1 rounded-md cursor-pointer">QuizCraft AI </span>
             </div>
         <div className={` ${status === 'authenticated'? 'block': 'hidden'} flex mx-auto gap-4`}>
             <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/home'? 'text-green-600' : '' }`}>
