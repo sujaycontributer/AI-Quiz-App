@@ -10,8 +10,8 @@ export default async function FrontPage(){
           </p>
 
           <Link  href={"/playground"} >
-          <button className="bg-[#A9F36A] relative font-semibold  text-sm  rounded-sm m-8 px-10 py-2 text-gray-700 hover:cursor-pointer hover:text-black">
-            <div className="absolute top-2  animate-ping bg-blue-500  h-[50%] w-[70px] rounded-full">
+          <button className="bg-gradient-to-b from-purple-500 via-green-500 to-red-500 z-20 text-transparent bg-clip-text shadow-[4px_12px_300px_20px_rgba(67,_230,_38,_0.67)]  relative font-semibold  text-sm  rounded-sm m-8 px-10 py-2 hover:cursor-pointer hover:text-white">
+            <div className="absolute top-2 animate-ping bg-blue-500  h-[50%] w-[70px] rounded-full">
             </div>
             
               Let's play
