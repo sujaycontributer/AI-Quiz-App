@@ -38,7 +38,7 @@ export default function Navbar () {
         </div>
 
        { status != "authenticated" &&  <div>
-            <button className="bg-gray-800 text-gray-200 border border-gray-600 px-6 md:px-6 py-1 z-10 shadow-xl md: rounded-xl cursor-pointer hover:text-gray-500 transition-all delay-75" onClick={() => signIn("google", {callbackUrl: "/"})}>Login</button>
+            <button className="bg-gray-800 text-gray-200 border border-gray-600 px-6 md:px-6 py-1 z-10 shadow-xl md: rounded-xl cursor-pointer hover:text-gray-500 transition-all delay-75" onClick={() => signIn("google", {callbackUrl: "/"})}>Sign In</button>
         </div>}
 
         {/* { status === "authenticated" &&  <span className="p-1 bg-white shadow-xl px-2 rounded-sm cursor-pointer text-gray-800" onClick={() => signOut({callbackUrl:'/'})}>

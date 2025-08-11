@@ -40,4 +40,8 @@ body {
   }
 }
 
+.parent:hover .child {
+  transform: translateX(5px);
+}
+
 
