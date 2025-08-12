@@ -71,7 +71,8 @@ export const authOptions: NextAuthOptions = {
       // If 'user' is present, it means a sign-in or session update happened
       // Here, 'user' now has the 'dbId' we manually added in signIn callback.
       if (user) {
-        token.id = (user as any).dbId || user.id; // Use your DB ID if available, else provider's ID
+        token.id = (user as any).dbId || user.id;
+         // Use your DB ID if available, else provider's ID
         // Or if you didn't add dbId in signIn, you could fetch it here:
         // const dbUser = await prisma.user.findUnique({ where: { email: token.email } });
         // if (dbUser) token.id = dbUser.id;

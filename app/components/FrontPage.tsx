@@ -14,7 +14,7 @@ export default async function FrontPage(){
             <div className="absolute top-2 mx-auto animate-ping bg-blue-500  h-[50%] w-[95px] rounded-full">
             </div>
               <div className="flex gap-3">
-                  <span >Let's Play</span> <span className="child text-white z-10 transition-all delay-75"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+                  <span >Let's Play</span> <span className="child text-gray-200 z-10 transition-all delay-75"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
 
               </div>
           </button>

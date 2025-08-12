@@ -17,22 +17,22 @@ export default function Navbar () {
                 <span className="bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 bg-clip-text text-transparent text-center text-xl  mr-0.5 px-0.5 py-1 rounded-md cursor-pointer">QuizCraft AI </span>
             </div>
         <div className={` ${status === 'authenticated'? 'block': 'hidden'} flex mx-auto gap-4`}>
-            <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/home'? 'text-green-600' : '' }`}>
-            <Link href={"/home"}>
-                Home
+            <Link href={"/home"} className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/home'? 'text-green-600' : '' }`}>
+                <div>
+                    Home
+                </div>
+            </Link>  
+            <Link href={"/playground"} className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/playground' ? 'text-green-600':''}`} >
+                <div >
+                    Playground
+                </div>
             </Link>
-            </div>  
-        <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/playground' ? 'text-green-600':''}`} >
-            <Link href={"/playground"}>
-                Playground
+            <Link href={"/acheivements"} className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/acheivements'? 'text-green-600':''}`}>
+                <div>
+                    Acheivements
+                </div>
             </Link>
-        </div>
-        <div className={`rounded-md font-semibold hover:text-green-600 ${pathname === '/acheivements'? 'text-green-600':''}`}>
-            <Link href={"/acheivements"}>
-                Acheivements
-            </Link>
-        </div>
-        <div>
+            <div>
 
         </div>
         </div>
