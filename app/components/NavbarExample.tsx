@@ -22,7 +22,7 @@ export default function NavbarExample() {
   );
 }
 
-// This is the Navbar functional component created from your HTML
+
 const Navbar = () => {
   return (
     <div className="fixed top-3 left-1/2 -translate-x-1/2 flex justify-between items-center w-[95%] md:w-3/4 max-w-2xl py-4 px-6 rounded-xl z-50 bg-black/40 backdrop-blur-sm shadow-4xl h-[60px] border border-gray-800">
