@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 export default function CircularProgress({accuracy}:{accuracy:number}) {
-  const [progress, setProgress] = useState(accuracy); // Change this dynamically
+  const [progress, setProgress] = useState(accuracy); 
 
   const radius = 50;
   const stroke = 10;
