@@ -65,7 +65,7 @@ export default function Playground() {
 
   return (
     <div className="p-4 w-full relative z-30">
-      {/* Topic Box */}
+   
       <div
         className={`${
           searchOpen ? "block" : "hidden"
