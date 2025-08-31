@@ -26,9 +26,6 @@ export default function FinalScore ({score, accuracy, questionsolved, submit, se
         setQuiz([]);
         setSearchOpen(true);
 
-        
-        
-        // console.log(data.data);
     }
     return <div className={`w-[80%] md:w-[30%] h-[50%] md:h-[55%] ${inter.className} border-t-4 rounded-lg border-blue-500  ${!submit ? 'hidden': 'block'} mx-auto fixed top-[27%] md:top-[35%] left-1/2 -translate-x-1/2 p-2  shadow-2xl z-50 flex justify-center items-center bg-gray-200 text-black`}>
        
