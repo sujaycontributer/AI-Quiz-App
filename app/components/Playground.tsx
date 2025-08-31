@@ -1,4 +1,4 @@
-// components/Playground.tsx
+
 "use client";
 import { useState } from "react";
 import Quiz, { quizProps } from "./Quiz";
