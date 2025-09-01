@@ -98,7 +98,7 @@ export default function Playground() {
         </button>
       </div>
 
-      {/* Quiz */}
+
       {quiz.length > 0 && (
         <div className="flex flex-col gap-2">
           {quiz.map((q) => (
